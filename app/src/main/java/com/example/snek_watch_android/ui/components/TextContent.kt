@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
@@ -28,6 +29,12 @@ fun PreviewDisplayLarge(){
     }
 }
 
+
+
+
+
+
+
 @Composable
 fun DisplayMedium(
     modifier: Modifier = Modifier,
@@ -43,6 +50,16 @@ fun PreviewDisplayMedium() {
         DisplayMedium(text = "Display Medium");
     }
 }
+
+
+
+
+
+
+
+
+
+
 
 @Composable
 fun DisplaySmall(
@@ -61,6 +78,72 @@ fun PreviewDisplaySmall(
         DisplaySmall(text = "Display Small");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+@Composable
+fun PrimaryDisplaySmall(
+    modifier: Modifier = Modifier,
+    text: String
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        style = MaterialTheme.typography.displaySmall,
+        color = MaterialTheme.colorScheme.onPrimaryContainer,
+        fontWeight = FontWeight.Bold
+    )
+}
+
+
+
+
+@Preview
+@Composable
+fun PreviewPrimaryDisplaySmall(
+
+) {
+    SnekwatchandroidTheme {
+        PrimaryDisplaySmall(text = "Primary Display Large")
+    }
+}
+
+@Composable
+fun SecondaryDisplaySmall(
+    modifier: Modifier = Modifier,
+    text: String
+) {
+
+}
+@Preview
+@Composable
+fun PreviewSecondaryDisplaySmall(
+
+) {
+    SnekwatchandroidTheme {
+        SecondaryDisplaySmall(text = "Secondary Display Small")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @Composable
 fun MediumContent(
