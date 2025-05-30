@@ -18,14 +18,17 @@ private val DarkColorScheme = darkColorScheme(
     onPrimaryContainer = Black100,
     secondary = White100,
     secondaryContainer = Grey10,
-    tertiary = Pink80,
     background = White100
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Black100,
+    onPrimary = White100,
+    primaryContainer = White100,
+    onPrimaryContainer = Black100,
+    secondary = White100,
+    secondaryContainer = Grey10,
+    background = White100
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -42,7 +45,7 @@ private val LightColorScheme = lightColorScheme(
 fun SnekwatchandroidTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
