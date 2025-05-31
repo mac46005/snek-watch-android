@@ -145,16 +145,54 @@ fun PreviewSecondaryDisplaySmall(
 
 
 
+
 @Composable
-fun MediumContent(
+fun SmallContent(
+    modifier: Modifier = Modifier,
     title: String,
-    content: Array<String>
+    content: Array<String>,
+    titleColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    paragraphColor: Color = MaterialTheme.colorScheme.onPrimaryContainer
 ) {
-    Column {
-        Text(text = title, style = MaterialTheme.typography.titleMedium)
+    Column (
+        modifier = modifier
+    ) {
+        Text(text = title, style = MaterialTheme.typography.titleSmall, color = titleColor)
         Spacer(modifier = Modifier.height(10.dp))
         for (paragraph in content) {
-            Text(text = paragraph, style = MaterialTheme.typography.bodyMedium)
+            Text(text = paragraph, style = MaterialTheme.typography.bodySmall, color = paragraphColor)
+        }
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewSmallContent() {
+    SnekwatchandroidTheme {
+        MediumContent(title = "Medium Content", content = arrayOf("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate autem dolorum culpa distinctio dolore nobis reiciendis sit illo consectetur pariatur recusandae nostrum odit provident doloribus quibusdam neque, inventore, harum sed."))
+    }
+}
+
+
+
+
+
+@Composable
+fun MediumContent(
+    modifier: Modifier = Modifier,
+    title: String,
+    content: Array<String>,
+    titleColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    paragraphColor: Color = MaterialTheme.colorScheme.onPrimaryContainer
+) {
+    Column (
+        modifier = modifier
+    ) {
+        Text(text = title, style = MaterialTheme.typography.titleMedium, color = titleColor, fontWeight = FontWeight.Bold)
+        Spacer(modifier = Modifier.height(10.dp))
+        for (paragraph in content) {
+            Text(text = paragraph, style = MaterialTheme.typography.bodyMedium, color = paragraphColor)
         }
     }
 
@@ -165,6 +203,40 @@ fun MediumContent(
 fun PreviewMediumContent() {
     SnekwatchandroidTheme {
         MediumContent(title = "Medium Content", content = arrayOf("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate autem dolorum culpa distinctio dolore nobis reiciendis sit illo consectetur pariatur recusandae nostrum odit provident doloribus quibusdam neque, inventore, harum sed."))
+    }
+}
+
+
+
+
+
+
+
+@Composable
+fun LargeContent(
+    modifier: Modifier = Modifier,
+    title: String,
+    content: Array<String>,
+    titleColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
+    paragraphColor: Color = MaterialTheme.colorScheme.onPrimaryContainer
+) {
+    Column (
+        modifier = modifier
+    ) {
+        Text(text = title, style = MaterialTheme.typography.titleLarge, color = titleColor)
+        Spacer(modifier = Modifier.height(10.dp))
+        for (paragraph in content) {
+            Text(text = paragraph, style = MaterialTheme.typography.bodyLarge, color = paragraphColor)
+        }
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewLargeContent() {
+    SnekwatchandroidTheme {
+        LargeContent(title = "Medium Content", content = arrayOf("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate autem dolorum culpa distinctio dolore nobis reiciendis sit illo consectetur pariatur recusandae nostrum odit provident doloribus quibusdam neque, inventore, harum sed."))
     }
 }
 
