@@ -65,7 +65,7 @@ fun HomeView(
                             title = "Easy Registration",
                             content = arrayOf(
                                 "Add your snake's details quickly and securely so you can focus on case, not paperwork."
-                            )
+                            \.\)
                         )
                     }
 
