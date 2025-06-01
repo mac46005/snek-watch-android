@@ -24,6 +24,7 @@ import com.example.snek_watch_android.ui.components.LargeContent
 import com.example.snek_watch_android.ui.components.MediumContent
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 import com.example.snek_watch_android.ui.views.home.components.CallToAction
+import com.example.snek_watch_android.ui.views.home.components.InfoCard
 import com.example.snek_watch_android.ui.views.home.components.TopBar
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -45,31 +46,19 @@ fun HomeView(
             }
 
             item {
+                InfoCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = "Easy Registration",
+                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork."
+                );
+            }
 
-                Column {
-                    FlowRow (
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Start
-                    ) {
-                        Spacer(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(300.dp)
-                                .background(
-                                    Color(0xFFEEECEC),
-                                    shape = RoundedCornerShape(30.dp)
-                                )
-                                .padding(bottom = 20.dp)
-                        )
-                        LargeContent(
-                            title = "Easy Registration",
-                            content = arrayOf(
-                                "Add your snake's details quickly and securely so you can focus on case, not paperwork."
-                            \.\)
-                        )
-                    }
-
-                }
+            item {
+                InfoCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = "Easy Registration",
+                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork."
+                );
             }
 
 
