@@ -18,7 +18,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,24 +37,21 @@ import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 fun InfoCard(
     modifier: Modifier = Modifier,
     title: String,
-    sentence: String
+    sentence: String,
+    painter: Painter
 ) {
     FlowRow (
         modifier = modifier
     ) {
 //        Spacer(modifier = Modifier.width(300.dp).height(300.dp))
-        Box (
-            modifier = Modifier.background(Color.Red, shape = RoundedCornerShape(10.dp))
-        ) {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.python_1),
-                contentDescription = "Bald",
-                contentScale = ContentScale.FillWidth
-            )
-        }
-
+        Image(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(50.dp)),
+            painter = painter,
+            contentDescription = "Bald",
+            contentScale = ContentScale.FillWidth
+        )
         Column {
 //            Image(painter = painterResource(id = R.), contentDescription = )
             Text(
@@ -79,7 +78,8 @@ fun PreviewInfoCard() {
         InfoCard(
             modifier = Modifier.fillMaxWidth(),
             title = "Easy Registration",
-            sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork."
+            sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork.",
+            painter = painterResource(id = R.drawable.python_1)
         );
     }
 }

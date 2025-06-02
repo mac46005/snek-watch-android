@@ -1,5 +1,6 @@
 package com.example.snek_watch_android.ui.views.home
 
+import androidx.annotation.experimental.R
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.snek_watch_android.ui.components.LargeContent
@@ -48,16 +50,27 @@ fun HomeView(
             item {
                 InfoCard(
                     modifier = Modifier.fillMaxWidth(),
-                    title = "Easy Registration",
-                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork."
+                    title = "Easy registration.",
+                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork.",
+                    painter = painterResource(id = com.example.snek_watch_android.R.drawable.python_1)
                 );
             }
 
             item {
                 InfoCard(
                     modifier = Modifier.fillMaxWidth(),
-                    title = "Easy Registration",
-                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork."
+                    title = "Feeding log.",
+                    sentence = "Record and review every meal, feeding times, and preferences to support healthy growth.",
+                    painter = painterResource(id = com.example.snek_watch_android.R.drawable.snake_eating_1)
+                );
+            }
+
+            item {
+                InfoCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    title = "Care reminders.",
+                    sentence = "Add your snake's details quickly and securely so you can focus on case, not paperwork.",
+                    painter = painterResource(id = com.example.snek_watch_android.R.drawable.snake_in_hand)
                 );
             }
 

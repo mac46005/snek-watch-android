@@ -88,7 +88,10 @@ fun PrimarySmallTextButton(
     onClick: () -> Unit,
     text: String
 ) {
-    PrimaryButton(onClick = onClick) {
+    PrimaryButton(
+        modifier = modifier,
+        onClick = onClick
+    ) {
         Text(text = text, style = MaterialTheme.typography.labelSmall)
     }
 }
@@ -100,4 +103,136 @@ fun PreviewPrimarySmallTextButton() {
         PrimarySmallTextButton(onClick = { /*TODO*/ }, text = "S Press me");
     }
 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@Composable
+fun SecondaryButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    content: @Composable RowScope.() -> Unit
+) {
+    Button(
+        modifier = modifier,
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = MaterialTheme.colorScheme.secondary,
+            contentColor = MaterialTheme.colorScheme.onSecondary
+        ),
+        contentPadding = PaddingValues(5.dp)
+    ) {
+        content();
+    }
+}
+
+@Preview
+@Composable
+fun PreviewSecondaryButton(){
+    SnekwatchandroidTheme {
+        SecondaryButton(onClick = {}) {
+
+        }
+    }
+}
+
+
+
+
+
+
+
+@Composable
+fun SecondaryLargeTextButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit,
+    text: String,
+) {
+    SecondaryButton (
+        modifier = modifier,
+        onClick = onClick
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelLarge,
+            color = MaterialTheme.colorScheme.onSecondary
+        )
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewSecondaryLargeButton(){
+    SnekwatchandroidTheme {
+        SecondaryLargeTextButton(onClick = {},text = "Secondary Large Button")
+    }
+}
+
+@Composable
+fun SecondaryMediumTextButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit
+) {
+    SecondaryButton (
+        modifier = modifier,
+        onClick
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSecondary
+        )
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewSecondarySmallButton(){
+    SnekwatchandroidTheme {
+        SecondaryMediumTextButton(onClick = {},text = "Secondary Large Button")
+    }
+}
+
+@Composable
+fun SecondarySmallTextButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    onClick: () -> Unit
+) {
+    SecondaryButton (
+        modifier = modifier,
+        onClick
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall,
+            color = MaterialTheme.colorScheme.onSecondary
+        )
+    }
+
+}
+
+@Preview
+@Composable
+fun PreviewSecondaryMediumButton(){
+    SnekwatchandroidTheme {
+        SecondaryMediumTextButton(onClick = {},text = "Secondary Large Button")
+    }
 }

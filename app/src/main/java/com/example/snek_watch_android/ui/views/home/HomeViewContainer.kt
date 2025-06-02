@@ -4,10 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun HomeContainer(
+fun HomeViewContainer(
     modifier: Modifier = Modifier
 ) {
     HomeView(
         modifier = modifier
     )
 }
+

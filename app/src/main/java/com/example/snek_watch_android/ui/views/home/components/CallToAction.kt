@@ -33,7 +33,7 @@ fun CallToAction(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Track. Regsiter. Care.",
+                text = "Track. Register. Care.",
                 style = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center,
