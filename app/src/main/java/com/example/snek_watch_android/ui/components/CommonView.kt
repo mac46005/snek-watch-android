@@ -29,7 +29,14 @@ fun CommonView(
     Scaffold (
         modifier = modifier,
         topBar = {
-            CommonTopBar()
+            CommonTopBar(
+                onClickData = {
+                              navHostController.navigate("")
+                },
+                onClickSnakes = {
+
+                }
+            )
         }
     ) {
         content(it)
@@ -51,7 +58,9 @@ fun PreviewCommonView() {
 
 @Composable
 private  fun CommonTopBar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClickData: () -> Unit,
+    onClickSnakes: () -> Unit
 ){
     Row (
         modifier = modifier
@@ -74,10 +83,10 @@ private  fun CommonTopBar(
                 text = "Manage Data",
                 modifier = Modifier.padding(end = 3.dp)
             ) {
-                
+                onClickData();
             }
             SecondarySmallTextButton(text = "Manage Snakes") {
-                
+                onClickSnakes();
             }
         }
     }
@@ -86,6 +95,9 @@ private  fun CommonTopBar(
 @Composable
 fun PreviewCommonTopBar(){
     SnekwatchandroidTheme {
-        CommonTopBar()
+        CommonTopBar(
+            onClickSnakes = {},
+            onClickData = {}
+        )
     }
 }
