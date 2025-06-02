@@ -35,7 +35,7 @@ fun HomeView(
     modifier: Modifier = Modifier
 ) {
     Scaffold (
-        modifier = modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+        modifier = modifier.padding(),
         topBar = {
             TopBar();
         }
