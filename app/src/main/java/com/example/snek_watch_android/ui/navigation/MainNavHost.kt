@@ -12,7 +12,9 @@ fun MainNavHost(
 ) {
     NavHost(navController = navController, startDestination = "home") {
         composable("home") {
-            HomeViewContainer()
+            HomeViewContainer(
+                navHostController = navController
+            )
         }
     }
 }

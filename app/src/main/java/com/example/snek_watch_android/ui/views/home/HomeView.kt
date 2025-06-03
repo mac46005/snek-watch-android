@@ -22,24 +22,22 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.snek_watch_android.ui.components.CommonView
 import com.example.snek_watch_android.ui.components.LargeContent
 import com.example.snek_watch_android.ui.components.MediumContent
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 import com.example.snek_watch_android.ui.views.home.components.CallToAction
 import com.example.snek_watch_android.ui.views.home.components.InfoCard
-import com.example.snek_watch_android.ui.views.home.components.TopBar
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun HomeView(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navHostController: NavHostController
 ) {
-    Scaffold (
-        modifier = modifier.padding(),
-        topBar = {
-            TopBar();
-        }
-    ) {
+    CommonView(navHostController = navHostController) {
         LazyColumn (
             modifier = modifier.padding(top = it.calculateTopPadding())
         ) {
@@ -78,12 +76,15 @@ fun HomeView(
 
         }
     }
+
 }
 
 @Preview
 @Composable
 fun PreviewHomeView() {
     SnekwatchandroidTheme {
-        HomeView();
+        HomeView(
+            navHostController = rememberNavController()
+        );
     }
 }
