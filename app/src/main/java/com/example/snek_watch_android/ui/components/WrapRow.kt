@@ -27,13 +27,3 @@ fun WrapRow(
     }
 }
 
-@Preview
-@Composable
-fun PreviewWrapRow() {
-    WrapRow(
-        content = {
-            Text(text = "Test")
-            Text(text = "Test")
-        }
-    );
-}

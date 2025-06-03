@@ -4,10 +4,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.DatePicker
+import androidx.compose.material3.DatePickerState
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
@@ -19,14 +23,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.snek_watch_android.R
 import com.example.snek_watch_android.ui.components.CommonView
+import com.example.snek_watch_android.ui.components.FormTextField
+import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
+import java.util.Date
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddEditView(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
-    name: MutableState<String>
+    name: MutableState<String>,
+    dob: DatePickerState
 ) {
     CommonView(
         modifier  = modifier,
@@ -43,31 +53,30 @@ fun AddEditView(
                         style = MaterialTheme.typography.headlineLarge,
                         fontWeight = FontWeight.Bold
                     )
-                    Text(text = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate autem dolorum culpa distinctio dolore nobis reiciendis sit illo consectetur pariatur recusandae nostrum odit provident doloribus quibusdam neque, inventore, harum sed.")
+                    Text(text = "Let's start by adding your snake to the tracker. Please fill out the information as accurately as you can—details like their name, date of birth, and species help us give you better insights over time. Even if you're still getting to know your new reptile friend, every bit of info counts. You can always update things later!")
                 }
 
 
 
             }
             item {
-                Column (
-                    modifier = Modifier.padding(vertical = 10.dp)
-                ) {
+                FormTextField(
+                    fieldName = "Name",
+                    value = name.value
+                ) { newName ->
+                    name.value = newName
+                }
+            }
+
+            item {
+                Column {
                     Text(
-                        text = "Name",
+                        text = "DOB",
                         style = MaterialTheme.typography.labelLarge,
-                        color = Color(0xFF5C5C5C)
+                        color = Grey20
                     )
 
-                    TextField(
-                        value = name.value,
-                        onValueChange = {it -> name.value = it;},
-                        shape = RoundedCornerShape(14.dp),
-                        colors = TextFieldDefaults.colors(
-                            focusedIndicatorColor = Color.Transparent,
-                            unfocusedIndicatorColor = Color.Transparent
-                        )
-                    )
+                    DatePicker(state = rememberDatePickerState())
                 }
             }
 
@@ -76,6 +85,7 @@ fun AddEditView(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
 fun PreviewAddEditView(){
@@ -84,7 +94,8 @@ fun PreviewAddEditView(){
             navHostController = rememberNavController(),
             name = remember {
                 mutableStateOf("")
-            }
+            },
+            dob = rememberDatePickerState()
         );
     }
 }
