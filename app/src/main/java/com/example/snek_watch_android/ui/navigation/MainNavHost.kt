@@ -11,10 +11,16 @@ fun MainNavHost(
     navController: NavHostController
 ) {
     NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
+        composable(HomeRoute.route) {
             HomeViewContainer(
                 navHostController = navController
             )
+        }
+
+        composable(
+            SnakeEditorRoute.route
+        ) {
+
         }
     }
 }

@@ -14,6 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.snek_watch_android.ui.components.DisplayLarge
 import com.example.snek_watch_android.ui.components.DisplaySmall
 import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
@@ -21,7 +23,8 @@ import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
 fun CallToAction(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    navHostController: NavHostController
 ) {
     Box (
         modifier = modifier
@@ -46,7 +49,12 @@ fun CallToAction(
                 textAlign = TextAlign.Center,
                 color = Color(0xFF999999)
             )
-            PrimaryLargeTextButton(onClick = { /*TODO*/ }, text = "Register My Snake")
+            PrimaryLargeTextButton(
+                onClick = {
+                          navHostController.navigate("")
+                },
+                text = "Register My Snake"
+            )
         }
     }
 }
@@ -57,6 +65,8 @@ fun PreviewCallToAction(
 
 ) {
     SnekwatchandroidTheme {
-        CallToAction()
+        CallToAction(
+            navHostController = rememberNavController()
+        )
     }
 }

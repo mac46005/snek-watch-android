@@ -42,7 +42,9 @@ fun HomeView(
             modifier = modifier.padding(top = it.calculateTopPadding())
         ) {
             item {
-                CallToAction();
+                CallToAction(
+                    navHostController = navHostController
+                );
             }
 
             item {
