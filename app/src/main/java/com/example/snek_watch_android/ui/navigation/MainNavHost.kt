@@ -11,7 +11,7 @@ fun MainNavHost(
     navController: NavHostController
 ) {
     NavHost(navController = navController, startDestination = "home") {
-        composable(HomeRoute.route) {
+        composable(Route.Home.getRoute()) {
             HomeViewContainer(
                 navHostController = navController
             )

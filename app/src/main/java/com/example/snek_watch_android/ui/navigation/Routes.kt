@@ -1,32 +1,40 @@
 package com.example.snek_watch_android.ui.navigation
-private interface IRoute {
-    val baseRoute: String
-    val arguments: Array<String>
-    fun getRoute(): String
-}
 
-private abstract class Route : IRoute {
-    override fun getRoute(): String {
-        for(String arg: this.arguments) {
+public sealed class Route(
+    private val baseName: String,
+    private val arguments: Array<String>
+){
 
+    public object Home: Route("home", arrayOf())
+    public object SnakeEditor: Route("snake-editory", arrayOf("id"))
+    fun getRoute(): String {
+        val sb: StringBuilder = StringBuilder(baseName)
+
+        if (arguments.isNotEmpty()) {
+            arguments.forEach { argument ->
+                sb.append("/${argumentFormatter(argument)}")
+            }
+        }
+
+        return sb.toString()
+    }
+
+    fun getRouteWithArgs(
+        arguments: Array<String>
+    ): String {
+        val sb: StringBuilder = StringBuilder(baseName)
+        if (arguments.isNotEmpty()) {
+            arguments.forEach { argument ->
+                sb.append("/$argument")
+            }
+        }
+        return sb.toString()
+    }
+
+    companion object {
+        private fun argumentFormatter(argument: String): String {
+            return "{$argument}";
         }
     }
-}
 
-
-private fun argumentFormat(argument: String): String = "{$argument}"
-object HomeRoute: IRoute {
-    override val baseRoute: String = ""
-    override val arguments: Array<String> = arrayOf()
-    override fun getRoute(): String {
-        TODO("Not yet implemented")
-    }
-}
-
-object SnakeEditorRoute : IRoute {
-    override val baseRoute: String = ""
-    override val arguments: Array<String> = arrayOf()
-    override fun getRoute(): String {
-        TODO("Not yet implemented")
-    }
 }
