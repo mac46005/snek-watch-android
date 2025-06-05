@@ -18,7 +18,8 @@ fun MainNavHost(
         }
 
         composable(
-            SnakeEditorRoute.route
+            Route.SnakeEditor.getRoute(),
+            arguments = Route.SnakeEditor.getNamedNavArguments()
         ) {
 
         }
