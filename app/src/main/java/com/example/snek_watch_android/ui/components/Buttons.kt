@@ -21,6 +21,7 @@ fun PrimaryButton(
     content: @Composable RowScope.() -> Unit
 ) {
     Button(
+        modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary,
             contentColor = MaterialTheme.colorScheme.onPrimary
@@ -49,7 +50,10 @@ fun PrimaryLargeTextButton(
     onClick: () -> Unit,
     text: String
 ) {
-    PrimaryButton(onClick = onClick) {
+    PrimaryButton(
+        modifier = modifier,
+        onClick = onClick
+    ) {
         Text(text = text, style = MaterialTheme.typography.labelLarge)
     }
 }

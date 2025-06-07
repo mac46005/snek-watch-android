@@ -1,6 +1,7 @@
 package com.example.snek_watch_android.ui.views.add_edit_snake
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.DatePicker
@@ -21,6 +22,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.snek_watch_android.ui.components.CommonView
 import com.example.snek_watch_android.ui.components.FormTextField
+import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
 import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
@@ -74,7 +76,12 @@ fun SnakeEditorView(
                 }
             }
 
-
+            item {
+                PrimaryLargeTextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = { /*TODO*/ }, text = "Register!"
+                )
+            }
         }
     }
 }
