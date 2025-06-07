@@ -29,8 +29,8 @@ import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 fun SnakeEditorView(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
-    name: MutableState<String>,
-    dob: DatePickerState
+    nameState: MutableState<String>,
+    dobState: DatePickerState
 ) {
     CommonView(
         modifier  = modifier,
@@ -56,9 +56,9 @@ fun SnakeEditorView(
             item {
                 FormTextField(
                     fieldName = "Name",
-                    value = name.value
+                    value = nameState.value
                 ) { newName ->
-                    name.value = newName
+                    nameState.value = newName
                 }
             }
 
@@ -86,10 +86,10 @@ fun PreviewAddEditView(){
     SnekwatchandroidTheme {
         SnakeEditorView(
             navHostController = rememberNavController(),
-            name = remember {
+            nameState = remember {
                 mutableStateOf("")
             },
-            dob = rememberDatePickerState()
+            dobState = rememberDatePickerState()
         );
     }
 }

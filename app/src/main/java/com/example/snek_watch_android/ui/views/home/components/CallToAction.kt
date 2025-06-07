@@ -16,9 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.snek_watch_android.ui.components.DisplayLarge
-import com.example.snek_watch_android.ui.components.DisplaySmall
 import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
+import com.example.snek_watch_android.ui.navigation.Routes
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
@@ -51,7 +50,7 @@ fun CallToAction(
             )
             PrimaryLargeTextButton(
                 onClick = {
-                          navHostController.navigate("")
+                          navHostController.navigate(Routes.snakeEditor.getRouteWithArgs(listOf("0")))
                 },
                 text = "Register My Snake"
             )
