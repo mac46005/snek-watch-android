@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.snek_watch_android.models.SnakeType
 import com.example.snek_watch_android.ui.components.CommonView
 import com.example.snek_watch_android.ui.components.FormTextField
 import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
@@ -32,7 +33,8 @@ fun SnakeEditorView(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
     nameState: MutableState<String>,
-    dobState: DatePickerState
+    dobState: DatePickerState,
+    snakeTypeListState: MutableState<List<SnakeType>>
 ) {
     CommonView(
         modifier  = modifier,
@@ -77,6 +79,10 @@ fun SnakeEditorView(
             }
 
             item {
+
+            }
+
+            item {
                 PrimaryLargeTextButton(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = { /*TODO*/ }, text = "Register!"
@@ -96,7 +102,8 @@ fun PreviewAddEditView(){
             nameState = remember {
                 mutableStateOf("")
             },
-            dobState = rememberDatePickerState()
+            dobState = rememberDatePickerState(),
+            snakeTypeListState = mutableStateOf<List<SnakeType>>(listOf())
         );
     }
 }
