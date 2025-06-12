@@ -18,24 +18,34 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.snek_watch_android.SnekWatchViewModelProvider
 import com.example.snek_watch_android.models.SnakeType
 import com.example.snek_watch_android.ui.components.CommonView
 import com.example.snek_watch_android.ui.components.FormTextField
 import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
 import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
+import com.example.snek_watch_android.viewmodels.SnakeEditorViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SnakeEditorView(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
-    nameState: MutableState<String>,
-    dobState: DatePickerState,
-    snakeTypeListState: MutableState<List<SnakeType>>
+    snakeEditorViewModel: SnakeEditorViewModel = viewModel(factory = SnekWatchViewModelProvider.Factory)
 ) {
+    val nameState = remember {
+        mutableStateOf("")
+    }
+    val dobState = rememberDatePickerState()
+
+    val snakeTypeListState = remember {
+        snakeEditorViewModel.snakeTypes
+    }
+
     CommonView(
         modifier  = modifier,
         navHostController = navHostController
@@ -74,12 +84,12 @@ fun SnakeEditorView(
                         color = Grey20
                     )
 
-                    DatePicker(state = rememberDatePickerState())
+                    DatePicker(state = dobState)
                 }
             }
 
             item {
-
+                
             }
 
             item {
@@ -99,11 +109,6 @@ fun PreviewAddEditView(){
     SnekwatchandroidTheme {
         SnakeEditorView(
             navHostController = rememberNavController(),
-            nameState = remember {
-                mutableStateOf("")
-            },
-            dobState = rememberDatePickerState(),
-            snakeTypeListState = mutableStateOf<List<SnakeType>>(listOf())
         );
     }
 }

@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.snek_watch_android.ui.views.add_edit_snake.SnakeEditorContainer
+import com.example.snek_watch_android.ui.views.add_edit_snake.SnakeEditorView
 import com.example.snek_watch_android.ui.views.home.HomeViewContainer
 
 @Composable
@@ -23,7 +23,7 @@ fun MainNavHost(
             route = Routes.snakeEditor.getRoute(),
             arguments = Routes.snakeEditor.getNamedNavArguments()
         ) {
-            SnakeEditorContainer(navHostController = navController)
+            SnakeEditorView(navHostController = navController)
         }
     }
 }
