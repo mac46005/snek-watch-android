@@ -1,29 +1,20 @@
 package com.example.snek_watch_android.ui.navigation
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.snek_watch_android.ui.views.add_edit_snake.SnakeEditorView
-import com.example.snek_watch_android.ui.views.home.HomeViewContainer
+import com.example.snek_watch_android.ui.views.home.HomeView
 
 @Composable
-@OptIn(ExperimentalMaterial3Api::class)
 fun MainNavHost(
-    navController: NavHostController
+    navHostController: NavHostController
 ) {
-    NavHost(navController = navController, startDestination = Routes.home.getRoute()) {
+    NavHost(navController = navHostController, startDestination = Routes.home.getRoute()) {
         composable(Routes.home.getRoute()) {
-            HomeViewContainer(
-                navHostController = navController
+            HomeView(
+                navHostController = navHostController
             )
-        }
-        composable(
-            route = Routes.snakeEditor.getRoute(),
-            arguments = Routes.snakeEditor.getNamedNavArguments()
-        ) {
-            SnakeEditorView(navHostController = navController)
         }
     }
 }

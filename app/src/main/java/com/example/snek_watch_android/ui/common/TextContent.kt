@@ -1,4 +1,4 @@
-package com.example.snek_watch_android.ui.components
+package com.example.snek_watch_android.ui.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,6 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
+
 
 @Composable
 fun DisplayLarge(

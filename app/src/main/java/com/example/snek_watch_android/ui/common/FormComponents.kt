@@ -1,4 +1,4 @@
-package com.example.snek_watch_android.ui.components
+package com.example.snek_watch_android.ui.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape

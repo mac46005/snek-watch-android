@@ -21,24 +21,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             SnekwatchandroidTheme {
-                MainNavHost(navController = rememberNavController())
+                MainNavHost(
+                    navHostController = rememberNavController()
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SnekwatchandroidTheme {
-        Greeting("Android")
     }
 }

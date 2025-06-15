@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,8 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.snek_watch_android.ui.components.PrimaryLargeTextButton
-import com.example.snek_watch_android.ui.navigation.Routes
+import com.example.snek_watch_android.ui.common.PrimaryLargeTextButton
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
@@ -25,14 +25,14 @@ fun CallToAction(
     modifier: Modifier = Modifier,
     navHostController: NavHostController
 ) {
-    Box (
+    Box(
         modifier = modifier
             .fillMaxWidth()
             .height(300.dp),
         contentAlignment = Alignment.Center
     ) {
         Column (
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment =  Alignment.CenterHorizontally
         ) {
             Text(
                 text = "Track. Register. Care.",
@@ -41,6 +41,7 @@ fun CallToAction(
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onPrimaryContainer
             )
+
             Text(
                 text = "Your all-in-one snake manager.",
                 style = MaterialTheme.typography.displaySmall,
@@ -49,20 +50,19 @@ fun CallToAction(
                 color = Color(0xFF999999)
             )
             PrimaryLargeTextButton(
+                modifier = Modifier
+                    .padding(top = 30.dp),
                 onClick = {
-                          navHostController.navigate(Routes.snakeEditor.getRouteWithArgs(listOf("0")))
+                    navHostController.navigate("")
                 },
                 text = "Register My Snake"
             )
         }
     }
 }
-
 @Preview
 @Composable
-fun PreviewCallToAction(
-
-) {
+fun PreviewCallToAction() {
     SnekwatchandroidTheme {
         CallToAction(
             navHostController = rememberNavController()

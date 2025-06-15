@@ -1,4 +1,4 @@
-package com.example.snek_watch_android.ui.components
+package com.example.snek_watch_android.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,7 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
-fun CommonView(
+fun MainView(
     modifier: Modifier = Modifier,
     navHostController: NavHostController,
     content: @Composable (PaddingValues) -> Unit
@@ -32,12 +32,12 @@ fun CommonView(
     Scaffold (
         modifier = modifier,
         topBar = {
-            CommonTopBar(
+            MainTopBar(
                 onClickData = {
-                              navHostController.navigate("")
+                    navHostController.navigate("")
                 },
                 onClickSnakes = {
-
+                    navHostController.navigate("")
                 }
             )
         }
@@ -45,26 +45,33 @@ fun CommonView(
         content(it)
     }
 }
-
 @Preview
 @Composable
-fun PreviewCommonView() {
+fun PreviewMainView(){
     SnekwatchandroidTheme {
-        CommonView(
-            navHostController = rememberNavController()
-        ){
-            Text(text = "Hello", modifier = Modifier.padding(top = it.calculateTopPadding()))
+        MainView(navHostController = rememberNavController()) {
+            Text(
+                modifier = Modifier.padding(top = it.calculateTopPadding()),
+                text = "Hello Android!"
+            )
         }
     }
 }
 
 
+
+
+
+
+
+
+
 @Composable
-private  fun CommonTopBar(
+fun MainTopBar(
     modifier: Modifier = Modifier,
     onClickData: () -> Unit,
     onClickSnakes: () -> Unit
-){
+) {
     Row (
         modifier = modifier
             .fillMaxWidth()
@@ -80,28 +87,30 @@ private  fun CommonTopBar(
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold
         )
+
         Row (
             modifier = Modifier.padding(end = 3.dp)
         ) {
             SecondarySmallTextButton(
+                modifier = Modifier.padding(end = 3.dp),
                 text = "Manage Data",
-                modifier = Modifier.padding(end = 3.dp)
             ) {
-                onClickData();
+                onClickData()
             }
-            SecondarySmallTextButton(text = "Manage Snakes") {
-                onClickSnakes();
+
+            SecondarySmallTextButton(
+                text = "Manage Snakes"
+            ) {
+                onClickSnakes()
             }
         }
     }
+
 }
 @Preview
 @Composable
-fun PreviewCommonTopBar(){
+fun PreviewMainTopBar() {
     SnekwatchandroidTheme {
-        CommonTopBar(
-            onClickSnakes = {},
-            onClickData = {}
-        )
+        MainTopBar(onClickData = {}) { }
     }
 }
