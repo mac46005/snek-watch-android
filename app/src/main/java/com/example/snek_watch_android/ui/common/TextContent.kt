@@ -243,3 +243,25 @@ fun PreviewLargeContent() {
 
 
 
+
+@Composable
+fun OnSecondaryLabelLarge(
+    modifier: Modifier = Modifier,
+    text: String
+) {
+    Text(
+        modifier = modifier,
+        text = text,
+        style = MaterialTheme.typography.labelLarge,
+        color = MaterialTheme.colorScheme.onSecondary
+    )
+}
+@Preview
+@Composable
+fun PreviewONSecondaryLabelLarge() {
+    SnekwatchandroidTheme {
+        OnSecondaryLabelLarge(text = "OnSecondaryLabelLarge")
+    }
+}
+
+

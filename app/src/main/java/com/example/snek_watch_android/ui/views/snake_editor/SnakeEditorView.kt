@@ -20,11 +20,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.snek_watch_android.SnekWatchViewModelProvider
 import com.example.snek_watch_android.models.SnakeType
+import com.example.snek_watch_android.ui.common.DatePickerField
 import com.example.snek_watch_android.ui.common.FormTextField
 import com.example.snek_watch_android.ui.common.MainView
 import com.example.snek_watch_android.ui.common.PrimaryLargeTextButton
 import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
+import com.example.snek_watch_android.ui.views.snake_editor.components.DropdownImage
 import com.example.snek_watch_android.viewmodels.SnakeEditorViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,11 +57,15 @@ fun SnakeEditorView(
             item {
                 Column {
                     Text(
-                        text = "Add Snake",
+                        text = "\uD83D\uDC0D Add Snake",
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
                         style = MaterialTheme.typography.headlineLarge
                     )
-                    Text(text = "Add your snake to the tracker. Enter details like name, birth date, and species to get better insights. Don’t worry—you can update this info anytime!")
+                    Text(
+                        text = "Add your snake to the tracker. Enter details like name, birth date, and species to get better insights. Don’t worry—you can update this info anytime!",
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
                 }
             }
 
@@ -73,19 +79,14 @@ fun SnakeEditorView(
             }
 
             item {
-                Column {
-                    Text(
-                        text = "DOB",
-                        style = MaterialTheme.typography.labelLarge,
-                        color = Grey20
-                    )
-
-                    DatePicker(state = dobState)
-                }
+                DatePickerField(
+                    fieldName = "\uD83C\uDF82 DOB",
+                    state = dobState
+                )
             }
 
             item {
-
+                DropdownImage()
             }
 
             item {

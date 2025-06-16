@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.snek_watch_android.ui.common.PrimaryLargeTextButton
+import com.example.snek_watch_android.ui.navigation.Routes
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
@@ -53,7 +54,7 @@ fun CallToAction(
                 modifier = Modifier
                     .padding(top = 30.dp),
                 onClick = {
-                    navHostController.navigate("")
+                    navHostController.navigate(Routes.snakeEditor.getRoute())
                 },
                 text = "Register My Snake"
             )
