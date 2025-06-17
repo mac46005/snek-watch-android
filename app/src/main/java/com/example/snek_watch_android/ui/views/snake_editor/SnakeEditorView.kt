@@ -10,9 +10,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -24,6 +26,7 @@ import com.example.snek_watch_android.ui.common.DatePickerField
 import com.example.snek_watch_android.ui.common.FormTextField
 import com.example.snek_watch_android.ui.common.MainView
 import com.example.snek_watch_android.ui.common.PrimaryLargeTextButton
+import com.example.snek_watch_android.ui.common.SnakeTypeDropdownMenuField
 import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 import com.example.snek_watch_android.ui.views.snake_editor.components.DropdownImage
@@ -42,9 +45,8 @@ fun SnakeEditorView(
     }
     val dobState = rememberDatePickerState()
 
-    val snakeTypeListState = remember {
-//        snakeEditorViewModel.snakeTypes
-        mutableStateListOf<SnakeType>()
+    var selectedSnakeType by remember {
+        mutableStateOf<SnakeType?>(null)
     }
 
     MainView(
@@ -86,7 +88,13 @@ fun SnakeEditorView(
             }
 
             item {
-                DropdownImage()
+                SnakeTypeDropdownMenuField(
+                    snakeTypeList = listOf(),
+                    snakeTypeValue = selectedSnakeType,
+                    onSnakeTypeChange = {
+                        selectedSnakeType = it
+                    }
+                )
             }
 
             item {

@@ -13,7 +13,6 @@ import androidx.compose.material3.DatePickerState
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -23,14 +22,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.example.snek_watch_android.R
 import com.example.snek_watch_android.models.SnakeType
-import com.example.snek_watch_android.ui.theme.Grey20
 import com.example.snek_watch_android.ui.theme.SnekwatchandroidTheme
 
 @Composable
@@ -158,9 +159,8 @@ fun PreviewDatePickerField() {
 
 
 @Composable
-fun DropdownImageMenuField(
+fun SnakeTypeDropdownMenuField(
     modifier: Modifier = Modifier,
-    fieldName: String,
     snakeTypeList: List<SnakeType>,
     snakeTypeValue: SnakeType?,
     onSnakeTypeChange: (SnakeType) -> Unit
@@ -175,17 +175,22 @@ fun DropdownImageMenuField(
         modifier = modifier
             .fillMaxWidth()
             .height(150.dp),
-        label = fieldName
+        label = "Snake Type"
     ) {
         Box (
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            Text(text = if (snakeTypeValue == null) "Select an Option" else snakeTypeValue!!.commonName!!)
+            Text(
+                modifier = Modifier
+                    .align(Alignment.Center),
+                text = if (snakeTypeValue == null) "Select an Option" else snakeTypeValue!!.commonName!!
+            )
             AsyncImage(
                 model = snakeTypeValue!!.image,
                 contentDescription = snakeTypeValue!!.commonName,
                 contentScale = ContentScale.FillWidth,
+                placeholder = painterResource(R.drawable.no_snake),
                 modifier = Modifier
                     .fillMaxSize()
                     .clickable {
@@ -222,15 +227,22 @@ fun DropdownImageMenuField(
 @Preview
 @Composable
 fun PreviewDropdowmImageMenuField() {
+
+    val snake1 = SnakeType(
+        1,
+        "Bald Python"
+    )
+
+
     SnekwatchandroidTheme {
-        DropdownImageMenuField(
-            fieldName = "Field Name",
+        SnakeTypeDropdownMenuField(
             snakeTypeList = listOf(
-                SnakeType(
-                    1,
-                    "Bald Python"
-                )
-            )
+                snake1
+            ),
+            snakeTypeValue = snake1,
+            onSnakeTypeChange = {
+                
+            }
         )
     }
 }
